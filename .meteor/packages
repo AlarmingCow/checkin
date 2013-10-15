@@ -17,3 +17,6 @@ accounts-password
 iron-router
 email
 observatory
+
+observatory-apollo
+observatory-galileo
