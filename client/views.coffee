@@ -1,6 +1,6 @@
 Router.configure
-  layout: 'layout'
-  renderTemplates: { nav: { to: 'nav' }}
+  layoutTemplate: 'layout'
+  yieldTemplates: { nav: { to: 'nav' }}
 
 Router.map ->
   this.route 'main', { path: '/' }
