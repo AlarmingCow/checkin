@@ -186,7 +186,7 @@
         <div class="thumbnail-body">
             {{#each checkins}}
             <div class="checkin">
-                {{#markdown}}{{description}}{{/markdown}}
+                {{#markdown}}{{{display}}}{{/markdown}}
             </div>
             {{/each}}
         </div>
@@ -200,7 +200,7 @@
                 <textarea id="text" cols="30" rows="5">{{checkin.description}}</textarea>
             </div>
             <div class="preview">
-                {{#markdown}}{{preview}}{{/markdown}}
+                {{#markdown}}{{{preview}}}{{/markdown}}
             </div>
             <div>
                 <button class="btn btn-primary btn-small" id="save-new-checkin">Add</button>
@@ -209,7 +209,7 @@
         </div>
         {{else}}
         <div class="thumbnail-body">
-        {{#markdown}}{{checkin.description}}{{/markdown}}
+        {{#markdown}}{{{checkin.display}}}{{/markdown}}
         </div>
         {{/if}}
 </template>

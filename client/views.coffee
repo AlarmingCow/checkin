@@ -108,11 +108,18 @@ Template.teamDay.checkins = -> Checkins.find(
     day: @day.toISOString()
   },
   {
-    sort: [['createdDate', 'desc']]
+    sort: [['createdDate', 'desc']],
+    transform: (checkin) ->
+      checkin.display = Emoji.convert(checkin.description) if checkin.description
+      checkin
   })
 
 
-Template.teamLatest.checkin = -> Checkins.latest(@_id)
+Template.teamLatest.checkin = ->
+  checkin = Checkins.latest(@_id)
+  if checkin?
+    checkin.display = Emoji.convert(checkin.description)
+  checkin
 Template.teamLatest.edit = -> Session.equals('adding', @_id)
 Template.teamLatest.preview = -> Session.get('preview')
 Template.teamLatest.events =
@@ -125,4 +132,4 @@ Template.teamLatest.events =
   'click #cancel-new-checkin': ->
     Session.set('preview', '')
     Session.set('adding', null)
-  'keyup #text': -> Session.set('preview', $('#text').val())
+  'keyup #text': -> Session.set('preview', Emoji.convert($('#text').val()))
